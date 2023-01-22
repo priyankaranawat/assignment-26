@@ -1,0 +1,398 @@
+1)
+
+#include<iostream>
+using namespace std;
+class Complex
+{
+    private:
+        int a,b;
+    public:
+        void setData(int x,int y)
+        {
+            a=x;
+            b=y;
+        }
+        void showData()
+        {
+            cout<<"\nreal="<<a<<"  img="<<b;
+        }
+        Complex add(Complex X)
+        {
+            Complex temp;
+            temp.a=a+X.a;
+            temp.b=b+X.b;
+            return temp;
+        }
+};
+int main()
+{
+    Complex c1,c2,c3;
+    c1.setData(3,4);
+    c2.setData(5,6);
+    c3=c1.add(c2);
+    c1.showData();
+    c2.showData();
+    c3.showData();
+    return 0;
+}
+
+
+
+
+
+2)
+
+#include<iostream>
+using namespace std;
+class Time
+{
+    private:
+        int h,m,s;
+    public:
+        void setTime(int x,int y,int z)
+        {
+            h=x;
+            m=y;
+            s=z;
+        }
+        void showTime()
+        {
+            cout<<"\n"<<h<<" hr "<<m<<" min "<<s<<" sec ";
+        }
+        void normalize()
+        {
+            while(s>=60||m>=60)
+            {
+                if(s>=60)
+                {
+                    s=s-60;
+                    m++;
+                }
+                if(m>=60)
+                {
+                    m=m-60;
+                    h++;
+                }
+            }
+        }
+        Time add(Time X)
+        {
+            Time temp;
+            temp.h=h+X.h;
+            temp.m=m+X.m;
+            temp.s=s+X.s;
+            return temp;
+        }
+};
+int main()
+{
+    Time t1,t2,t3;
+    t1.setTime(12,72,132);
+    t1.normalize();
+    t2.setTime(9,216,135);
+    t2.normalize();
+    t3=t1.add(t2);
+    t3.normalize();
+    t1.showTime();
+    t2.showTime();
+    t3.showTime();
+    return 0;
+}
+
+
+3)
+#include<iostream>
+using namespace std;
+class Cube
+{
+    private:
+        int a;
+        int vol;
+    public:
+        Cube(int x)                                         //Parameterized constructor
+        {
+            a=x;
+        }
+        void findVolume()
+        {
+            vol=a*a*a;
+        }
+        int getSide()                                                   //getter
+        {
+            return a;
+        }
+        int getVolume()                                                //getter
+        {
+            return vol;
+        }
+
+};
+int main()
+{
+    Cube ob(5);                                     //object creation and implicit call to the constructor
+    ob.findVolume();
+    cout<<"Volume of cube with side "<<ob.getSide()<<" is "<<ob.getVolume();
+    return 0;
+}
+
+
+
+4)
+#include<iostream>
+using namespace std;
+class Counter
+{
+    private:
+        static int x;
+    public :
+        Counter ()
+        {
+            x++;
+        }
+        void display()
+        {
+            cout<<"Number of objects created="<<x;
+        }
+
+};
+int Counter :: x=0;
+int main()
+{
+    Counter c1,c2,c3;
+    c1  .display();
+    return 0;
+}
+
+
+
+5)
+#include<iostream>
+using namespace std;
+class Date
+{
+    private:
+        int dd,month,year;
+    public:
+        Date(int d,int m,int y)
+        {
+            dd=d;
+            month=m;
+            year=y;
+        }
+        void display()
+        {
+            cout<<dd<<" dd "<<month<<" month "<<year<<" year ";
+        }
+
+};
+int main()
+{
+    Date ob(12,53,46);
+    ob.display();
+    return 0;
+}
+
+
+
+6)
+#include<iostream>
+#include<string.h>
+using namespace std;
+class student
+{
+    private:
+        char name[50];
+        int roll;
+        float marks;
+    public:
+        student(char n[],int r,float m)
+        {
+            strcpy(name,n);
+            roll=r;
+            marks=m;
+        }
+        void showData()
+        {
+            cout<<"Name is "<<name<<"\nroll no is "<<roll<<"\nMarks are "<<marks;
+        }
+};
+int main()
+{
+    student ob("Dolly Singh",21,86.4);            //object creation and implicit call to the parameterized constructor
+    ob.showData();
+    return 0;
+}
+
+
+
+7)
+#include<iostream>
+using namespace std;
+class Box
+{
+    private:
+        int length;
+        int breadth;
+        int height;
+        int volume;
+    public:
+        Box(int l,int b,int h)
+        {
+            length=l;
+            breadth=b;
+            height=h;
+        }
+        void calculateVolume()
+        {
+            volume=length*breadth*height;
+        }
+        int getLength()
+        {
+            return length;
+        }
+        int getBreadth()
+        {
+            return breadth;
+        }
+        int getHeight()
+        {
+            return height;
+        }
+        int getVolume()
+        {
+            return volume;
+        }
+};
+int main()
+{
+    Box ob(6,5,3);                               //object creation and implicit call to the parameterized constructor
+    ob.calculateVolume();
+    cout<<"Volume of Box with length "<<ob.getLength()<<" breadth "<<ob.getBreadth()<<" height "<<ob.getHeight()<<" is "<<ob.getVolume();
+    return 0;
+}
+
+
+
+8)
+
+#include<iostream>
+using namespace std;
+class Bank
+{
+    private:
+        int principle;
+        float ROI;
+        int year;
+        float SI;
+    public:
+        Bank()                                 //Non Parameterized constructor
+        {
+            principle=0;
+            ROI=0;
+            year=0;
+        }
+        void setData(int p,int r,int y)
+        {
+            principle=p;
+            ROI=r;
+            year=y;
+        }
+        void calInterest()
+        {
+            SI=(principle*ROI*year)/100;
+            cout<<"Simple interest is "<<SI<<" for principle = "<<principle<<" rate= "<<ROI<<" and time = "<<year<<" year(s)";
+        }
+};
+int main()
+{
+    Bank ob;          //object creation and implicit call to the non parameterized constructor
+    ob.setData(200,10,4);
+    ob.calInterest();
+    return 0;
+}
+
+
+9)
+#include<iostream>
+#include<string.h>
+using namespace std;
+class Bill
+{
+    private:
+        char name[50];
+        int units;
+        float charge;
+    public:
+        int get(int u,char n[])
+        {
+            strcpy(name,n);
+            units=u;
+        }
+       void calculateBill()
+       {
+           if(units<=100)
+           {
+               charge=1.20*units;
+           }
+           else
+           {
+                if(units<=200)
+                {
+                    charge=100*1.20;
+                    units=units-100;
+                    charge=charge+units*2;
+                }
+                else
+                {
+                    charge=100*1.20;
+                    units=units-100;
+                    charge=charge+100*2;
+                    units=units-100;
+                    charge=charge+units*3;
+                }
+            }
+       }
+       void display()
+       {
+           cout<<"For "<<units<<" units , "<<name<<" has to pay "<<charge<<" Rs ";
+       }
+};
+int main()
+{
+    Bill ob;int x;
+    cout<<"Enter units";cin>>x;
+    ob.get(x,"Dolly Singh");
+    ob.calculateBill();
+    ob.display();
+    return 0;
+}
+
+
+10)
+#include<iostream>
+using namespace std;
+class StaticCount
+{
+    private:
+        static int k;                                   //Declaration of static member  variable
+    public:
+        void increment()
+        {
+            k++;
+        }
+        void display()
+        {
+            cout<<"increment function called "<<k<<" times";
+        }
+};
+int StaticCount :: k=0;                                     //Defining static member variable
+int main()
+{
+    StaticCount ob;
+    ob.increment();
+    ob.increment();
+    ob.increment();
+    ob.display();
+    return 0;
+}
+
